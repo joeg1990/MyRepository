@@ -1,0 +1,49 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Data_Structures_List
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            List<Instagram> myObjectList = new List<Instagram>();
+
+            Instagram user = new Instagram();
+            user.Name = "Joe";
+            user.totalViews =  "Views:100";
+            user.Likes =  "Likes:50";
+            user.Comment1 =   "Jack@Olantern59: " +
+                "thats a great picture!:";
+            user.Comment2 =  "Flower@power:" + "Wow!!! Nice!";
+
+            myObjectList.Add(user);
+
+            List<Instagram> newList = myObjectList.Where(instagram => instagram.Name == "Joe").ToList();
+
+            foreach (var item in newList)
+
+            {
+                Console.Write(item.Name +  " Has this many " + item.totalViews + " and has this many " + item.Likes + " Comments: " +  item.Comment1 + item.Comment2);
+             
+            }
+
+        }
+
+
+    }
+}
+public class Instagram
+{
+    public string Name { get; set; }
+    public string totalViews { get; set; }
+    public string Likes { get; set; }
+    public string Comment1 { get; set; }
+    public string Comment2 { get; set; }
+}
+
+
