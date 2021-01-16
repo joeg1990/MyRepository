@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Cake_Code
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Cake> myObjectList = new List<Cake>();
+
+            Cake firstCake = new Cake();
+            firstCake.type = "Wedding Cake";
+            firstCake.flavor = "Vanilla";
+
+            Cake secondCake = new Cake();
+            secondCake.type = "Party Cake";
+            secondCake.flavor = "Chocolate";
+
+            myObjectList.Add(firstCake);
+            myObjectList.Add(secondCake);
+          
+
+           
+             
+        }
+    }
+}
+
+public class Cake
+{
+    public string type { get; set; }
+    public string flavor { get; set; }
+}
