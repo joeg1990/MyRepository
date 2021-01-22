@@ -8,23 +8,29 @@ namespace Cake_Code
     {
         static void Main(string[] args)
         {
-            CakeValues<string,string> myCake = new CakeValues<string,string>();
+            MyFirstCake myCake = new MyFirstCake();
+            myCake.MyType<string>("Wedding Cake", "Vanilla");
 
-            myCake.MyCakeType = "Wedding Cake";
-            myCake.MyCakeFlavor = " is a Vallina Cake";
-            Console.WriteLine(myCake.MyCakeType + "," + myCake.MyCakeFlavor);
 
-            CakeValues<string,string> myCake2 = new CakeValues<string,string>();
+            MysecondCake myCake2 = new MysecondCake();
+            myCake2.MyType2<string>("Party Cake", "Chocolate");
 
-            myCake2.MyCakeType = "Party Cake";
-            myCake2.MyCakeFlavor = " is a Chocolate Cake";
-            Console.WriteLine(myCake2.MyCakeType + "," + myCake2.MyCakeFlavor);
         }
     }
 }
- public class CakeValues<Cake,Taste>
+public class MyFirstCake
 {
-   public Cake MyCakeType { get; set; }
-    public Taste MyCakeFlavor { get; set; }
- 
+  public void MyType<T>(T myCakeType, string myFlavor)
+    {
+        Console.WriteLine("My first Cake is:" + myCakeType);
+        Console.WriteLine("My frist Cake flavor is:" + myFlavor);
+    }
+}
+public class MysecondCake
+{
+    public void MyType2<T2>(T2 myCakeType2, string myFlavor2)
+    {
+        Console.WriteLine("My second Cake is:" + myCakeType2);
+        Console.WriteLine("My second Cake flavor is:" + myFlavor2);
+    }
 }
