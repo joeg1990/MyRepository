@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+
+namespace Stacks_Assignment
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Page nPage = new Page();
+
+            nPage.AddAction("Home Page");
+            nPage.AddAction("Refesh Page");
+            nPage.AddAction("Go Foward one Page");
+            nPage.AddAction("Go Back one Page");
+
+            nPage.UndoAction();
+            nPage.PrintActions();
+            nPage.PrintActionAgain();
+            
+
+        }
+    }
+}
+public class Page
+{
+    private Stack<string> myWebpage = new Stack<string>();
+
+    private Stack<string> undoActionStack = new Stack<string>();
+
+    private Stack<string> fristAction = new Stack<string>();
+
+    public void AddAction(string newWebpage)
+    {
+        myWebpage.Push(newWebpage);
+    }
+
+    public void PrintActions()
+    {
+        foreach (var item in myWebpage)
+        {
+            Console.WriteLine("My action is: " + item);
+        }
+    }
+    public void UndoAction()
+    {
+        string lastAction = myWebpage.Pop();
+
+        undoActionStack.Push(lastAction);
+    }
+
+    public void PrintActionAgain()
+    {
+        foreach (var item in undoActionStack)
+        {
+            Console.WriteLine("My action is: " + item);
+        }
+
+       }
+    public void FirstAction(string newAction)
+    {
+        string myfirstAction = myWebpage.Peek();
+
+        fristAction.P(myfirstAction);
+    }
+
+ }
+
+
