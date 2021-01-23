@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+
+namespace Queues_Assignment_Code
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Office myPatient = new Office();
+            Office myPatient2 = new Office();
+            Office myPatient3 = new Office();
+
+            myPatient.AddPatientToQueue ("My first paitent in line");
+            myPatient2.AddPatientToQueue ("My second paitent in line");
+            myPatient3.AddPatientToQueue("My last paitent in Line");
+            myPatient.PaitentsAttended();
+            myPatient.WhichPatientAttended();
+           
+        }
+    }
+}
+
+public class Office
+{
+    private Queue<string> waitingPatient = new Queue<string>();
+
+    public void AddPatientToQueue(string parameter)
+    {
+        waitingPatient.Enqueue(parameter );
+    }
+    public void PaitentsAttended()
+    {
+        Console.WriteLine(" I have atteneded: " + waitingPatient.Count + " patient today ");
+    }
+
+    public void WhichPatientAttended()
+    {
+        foreach(var item in waitingPatient)
+        {
+            Console.WriteLine("Patients: " + item);
+        }      
+    }
+
+    
