@@ -8,15 +8,14 @@ namespace Queues_Assignment_Code
         static void Main(string[] args)
         {
             Office myPatient = new Office();
-            Office myPatient2 = new Office();
-            Office myPatient3 = new Office();
+           
 
-            myPatient.AddPatientToQueue ("My first paitent in line");
-            myPatient2.AddPatientToQueue ("My second paitent in line");
-            myPatient3.AddPatientToQueue("My last paitent in Line");
+            myPatient.AddPatientToQueue("My first paitent in line");
+            myPatient.AddPatientToQueue("My second paitent in line");
+            myPatient.AddPatientToQueue("My last paitent in Line");
             myPatient.PaitentsAttended();
             myPatient.WhichPatientAttended();
-           
+
         }
     }
 }
@@ -27,7 +26,7 @@ public class Office
 
     public void AddPatientToQueue(string parameter)
     {
-        waitingPatient.Enqueue(parameter );
+        waitingPatient.Enqueue(parameter);
     }
     public void PaitentsAttended()
     {
@@ -36,10 +35,12 @@ public class Office
 
     public void WhichPatientAttended()
     {
-        foreach(var item in waitingPatient)
+        foreach (var item in waitingPatient)
         {
             Console.WriteLine("Patients: " + item);
-        }      
+        }
     }
+   }
 
-    
+
+
