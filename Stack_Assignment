@@ -61,7 +61,7 @@ public class Page
     {
         string myfirstAction = myWebpage.Peek();
 
-        fristAction.P(myfirstAction);
+        fristAction.Push(myfirstAction);
     }
 
  }
