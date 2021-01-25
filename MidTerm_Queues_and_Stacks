@@ -22,25 +22,22 @@ namespace QueueAndStack
             
             myStack.Push("Dirty Dishes");
             myStack.Push("Clean Dishes");
-            myStack.Push("Stack of clean Dishes");
+            myStack.Push("Dishes being washed"); 
 
 
-            //Peek() is a useful method as it just looks at the value without removing the item.
+            
             Console.WriteLine("First: ");
             Console.WriteLine(myQueue.Peek());
             Console.WriteLine("");
 
-            //Dequeue() removes the first item in queue and returns it.
             Console.WriteLine("Then: ");
             Console.WriteLine(myQueue.Dequeue());
             Console.WriteLine("");
 
-            //Pop() removes the last item on the stack and returns it.
-            Console.WriteLine("Pop: ");
+            Console.WriteLine("Remove: ");
             Console.WriteLine(myStack.Pop());
             Console.WriteLine("");
 
-            //As you will be able to see the items were removed after dequeueing/poping.
             foreach (var item in myQueue)
             {
                 Console.WriteLine("Queue: " + item);
