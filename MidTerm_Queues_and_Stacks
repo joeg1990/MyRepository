@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace QueueAndStack
@@ -19,10 +19,11 @@ namespace QueueAndStack
             myQueue.Enqueue("The Customer eat and then ask for check");
             myQueue.Enqueue("The Customer then leaves the resturant");
 
-
-            myStack.Push("Dirty Dishes");
             myStack.Push("Clean Dishes");
-            myStack.Push("Dishes being washed");
+            myStack.Push("Dirty Dishes");
+            myStack.Push("Wash Dirty Dishes");
+            myStack.Push("Clean Dishes");
+
 
 
 
@@ -34,13 +35,14 @@ namespace QueueAndStack
             Console.WriteLine(myQueue.Dequeue());
             Console.WriteLine("");
 
-            Console.WriteLine("Remove: ");
+            Console.WriteLine("");
+            Console.WriteLine(myStack.Peek());
+            Console.WriteLine("");
+
+            Console.WriteLine("");
             Console.WriteLine(myStack.Pop());
             Console.WriteLine("");
 
-            Console.WriteLine("Place ");
-            Console.WriteLine(myStack.Peek());
-            Console.WriteLine("");
 
             foreach (var item in myQueue)
             {
@@ -68,8 +70,3 @@ namespace QueueAndStack
         public string Text { get; set; }
     }
 }
-
-   
-
-
-         
