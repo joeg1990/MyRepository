@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections;
+
+namespace Module_7_Week_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hashtable myTable = new Hashtable();
+
+            myTable["A1"] = "Canned Food";
+            myTable["B1"] = "Toilet Paper";
+            myTable["D1"] = "Dish Soap";
+            myTable["E1"] = "Paper Dishes";
+            myTable["F1"] = "Ziplock Bags";
+
+            myTable["G1"] = "Offic Desk";
+            myTable["H1"] = "Office Chairs";
+            myTable["I2"] = "Pens";
+            myTable["J2"] = "Pencils";
+            myTable["K2"] = "Copy Paper";
+
+            myTable["L2"] = "Staplers";
+            myTable["M2"] = "Tape";
+            myTable["N2"] = "Hand Sanitizer";
+            myTable["O3"] = "Printers";
+            myTable["P3"] = "Ink for Printers";
+
+            myTable["Q3"] = "Hard Drives";
+            myTable["R3"] = "SSDs";
+            myTable["S3"] = "Memory Modules";
+            myTable["T3"] = "Motherboards";
+            myTable["U3"] = "CPUs";
+
+            bool isItemAvailable = myTable.ContainsKey("E3");
+            Console.WriteLine(isItemAvailable);
+
+
+
+
+        }
+    }
+}
