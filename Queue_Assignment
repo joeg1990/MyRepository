@@ -30,7 +30,7 @@ public class Office
     public void PaitentsAttended()
     {
         Console.WriteLine(" I have atteneded: " + waitingPatient.Count + " patient today ");
-        waitingPatient.Clear();
+        waitingPatient.Dequeue();
     }
 
     public void WhichPatientAttended()
