@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections;
 
-namespace Module_7_Week_3
+namespace CollectionsApplication
 {
     class Program
     {
@@ -33,12 +33,25 @@ namespace Module_7_Week_3
             myTable["T3"] = "Motherboards";
             myTable["U3"] = "CPUs";
 
-            bool isItemAvailable = myTable.ContainsKey("E3");
-            Console.WriteLine(isItemAvailable);
+            // Write any section(key) string:
+            if (myTable.ContainsKey(""))
+            {
+                Console.WriteLine("This item is already in the rack");
+            }
+            else
+            {
+                Console.WriteLine("This sections is not available");
+            }
 
+            
 
+            ICollection key = myTable.Keys;
 
-
+            foreach (string r in key)
+            {
+                Console.WriteLine(r + ": " + myTable[r]);
+            }
+            Console.WriteLine("This many sections are in use: " + myTable.Count);
         }
     }
 }
