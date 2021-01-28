@@ -35,9 +35,6 @@ namespace QueueAndStack
             Console.WriteLine(myQueue.Dequeue());
             Console.WriteLine("");
 
-            Console.WriteLine("");
-            Console.WriteLine(myStack.Peek());
-            Console.WriteLine("");
 
             Console.WriteLine("");
             Console.WriteLine(myStack.Pop());
