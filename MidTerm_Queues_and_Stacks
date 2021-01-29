@@ -19,10 +19,9 @@ namespace QueueAndStack
             myQueue.Enqueue("The Customer eat and then ask for check");
             myQueue.Enqueue("The Customer then leaves the resturant");
 
+
             myStack.Push("Clean Dishes");
             myStack.Push("Dirty Dishes");
-            myStack.Push("Wash Dirty Dishes");
-            myStack.Push("Clean Dishes");
 
 
 
@@ -53,7 +52,7 @@ namespace QueueAndStack
                 Console.WriteLine("Stack: " + item);
             }
 
-            Console.ReadLine();
+            Console.WriteLine("This is my new stack of Clean Dishes: [{0}]", myStack.Peek());
         }
     }
 
@@ -67,3 +66,5 @@ namespace QueueAndStack
         public string Text { get; set; }
     }
 }
+
+    
