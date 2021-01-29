@@ -8,63 +8,71 @@ namespace QueueAndStack
         static void Main(string[] args)
         {
 
-            Queue<string> myQueue = new Queue<string>();
+            Restaurant myRestaurant = new Restaurant ();
+
+            myRestaurant.CustomerArrives(" The first Customer");
+            myRestaurant.CustomerArrives("The second Customer");
+            myRestaurant.CustomerArrives("The third Customer");
 
 
-            Stack<string> myStack = new Stack<string>();
+            
+            myRestaurant.WaitingCustomers();
+            myRestaurant.CustomerSeated();
+            myRestaurant.WaitingCustomers();
+
+            myRestaurant.CustomerLeaves();
+            myRestaurant.CustomerSeated();
+            myRestaurant.WaitingCustomers();
+            myRestaurant.CustomerLeaves();
 
 
-
-            myQueue.Enqueue(" The Customer is seated");
-            myQueue.Enqueue("The Customer eat and then ask for check");
-            myQueue.Enqueue("The Customer then leaves the resturant");
+            myRestaurant.CleanedDishes();
+            myRestaurant.DirtyDishes();
 
 
-            myStack.Push("Clean Dishes");
-            myStack.Push("Dirty Dishes");
-
-
-
-
-            Console.WriteLine("First: ");
-            Console.WriteLine(myQueue.Peek());
-            Console.WriteLine("");
-
-            Console.WriteLine("Then: ");
-            Console.WriteLine(myQueue.Dequeue());
-            Console.WriteLine("");
-
-
-            Console.WriteLine("");
-            Console.WriteLine(myStack.Pop());
-            Console.WriteLine("");
-
-
-            foreach (var item in myQueue)
-            {
-                Console.WriteLine("Queue: " + item);
-            }
-
-            Console.WriteLine("");
-
-            foreach (var item in myStack)
-            {
-                Console.WriteLine("Stack: " + item);
-            }
-
-            Console.WriteLine("This is my new stack of Clean Dishes: [{0}]", myStack.Peek());
         }
-    }
-
-    class MyClass
-    {
-        public MyClass(string text)
-        {
-            Text = text;
-        }
-
-        public string Text { get; set; }
     }
 }
 
-    
+public class Restaurant
+{
+    Queue<string> theQueue = new Queue<string>();
+    Stack<string> theStack = new Stack<string>();
+    Stack<string> theCleanStack = new Stack<string>();
+
+
+
+    public void CustomerArrives(string theCustomer)
+    {
+        theQueue.Enqueue(theCustomer);
+    }
+
+    public void WaitingCustomers()
+    {
+        Console.WriteLine("There is " + theQueue.Count + " customers waiting");
+    }
+
+    public void CustomerSeated()
+    {
+        string theCustomer = theQueue.Dequeue();
+        Console.WriteLine("Customer: " + theCustomer + " has been seated"); 
+    }
+    public void CustomerLeaves()
+    {
+        theStack.Push("First set of Dishes");
+        Console.WriteLine("Customer pays and leaves Restaurant");
+    }
+    public void CleanedDishes()
+    {
+       string theDishes = theStack.Pop();
+        theCleanStack.Push(theDishes);
+
+        Console.WriteLine("The Dishes have been cleaned");
+    }
+    public void DirtyDishes()
+    {
+        string cleanDishes = theCleanStack.Peek();
+        theStack.Push(cleanDishes);
+        Console.WriteLine("Ther are this many clean dishes " + theCleanStack.Count);
+    }
+}
