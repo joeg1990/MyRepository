@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Module_8_Week_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DMV myDMV = new DMV();
+            Plate myPlate = new Plate();
+            myPlate.PlateNumber = "SDF987";
+
+            myDMV.AddPlateNumber(myPlate);
+
+            Plate myPlate2 = new Plate();
+            myPlate.PlateNumber = "SDF987";
+
+            myDMV.AddPlateNumber(myPlate2);
+
+        }
+    }
+}
+
+public class DMV
+{
+   
+    public HashSet<Plate> mySet = new HashSet<Plate>();
+
+    public void AddPlateNumber(Plate plate)
+    {
+        bool result = mySet.Add(plate);
+
+        if (result == false)
+        {
+            Console.WriteLine("This Plate number already exist");
+        }
+    }
+
+  
+
+}
+
+public class Plate
+{
+
+    public string PlateNumber { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        Plate newClass = obj as Plate;
+
+        return this.PlateNumber .Equals(newClass.PlateNumber);
+    }
+
+    public override int GetHashCode()
+    {
+        return this.PlateNumber.GetHashCode();
+    }
+
+}
+
+    
+   
+   
