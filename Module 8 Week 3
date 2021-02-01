@@ -14,7 +14,7 @@ namespace Module_8_Week_3
             myDMV.AddPlateNumber(myPlate);
 
             Plate myPlate2 = new Plate();
-            myPlate.PlateNumber = "SDF987";
+            myPlate2.PlateNumber = "SDF987";
 
             myDMV.AddPlateNumber(myPlate2);
 
