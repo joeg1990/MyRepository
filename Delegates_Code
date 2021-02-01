@@ -25,6 +25,9 @@ namespace Delegates_Code
             pointer += (int d, int e) => {
                 Console.WriteLine(d / e);
             };
+            
+            pointer -= myClass.AddingNumbers;
+            pointer -= myClass.SubtactingNumbers;
              
             pointer(15, 3);
         }
