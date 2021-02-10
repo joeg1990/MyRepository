@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Delegates_Continuation_Module_10
 {
     class Program
-    { 
+    {
 
         public delegate string MyDelegatePointer(int a, int b);
 
@@ -19,9 +19,12 @@ namespace Delegates_Continuation_Module_10
 public class MyFPSGame
 {
     public Enduser PrimaryEnduser { get; set; }
+    public MyUser PrimaryMyUser { get; set: }
+    public Inventory PrimaryInventory { get; set; }
+    public Movement PrimaryMovement { get; set; }
 
     private Action theCharacterAction;
-  
+
 
     public void GameActions()
     {
@@ -96,7 +99,7 @@ public class MyFPSGame
 
     public void HandleAction()
     {
-        theCharacterAction();   
+        theCharacterAction();
     }
 
     public bool WillGunFire(Enduser enduser)
@@ -111,6 +114,58 @@ public class MyFPSGame
         return false;
 
     }
+
+    public bool WillGundReload(MyUser myuser)
+    {
+        if (myuser.AmmoCount = 0)
+            return true;
+
+        
+        return false;
+    }
+
+    public bool UserSwitchesGun(Inventory inventory)
+    {
+        if (inventory.FirstGun)
+            return true
+                if (inventory.Gun2 !=
+                   PrimaryInventory.Gun2)
+            return true;
+
+        return false;
+
+    }
+
+    public bool UserMovement(Movement movement)
+    {
+        if (movement.UserMoves)
+            return true
+                if(movment.)
+    }
+
+    public class Movement
+    {
+        public string UserPeeksLeft { set; get; }
+        public string UserPeeksRight { set; get; }
+        puliic bool UserMoves { set; get; }
+    }
+
+    public class Inventory
+    {
+        public string Gun2 { get; set;}
+        public bool FirstGun { get; set; }
+
+
+    }
+
+    public class MyUser
+    {
+        public int AmmoCount { get; set; }
+        public bool IsEmpty { get; set; }
+   
+    }
+  
+    
 }
 
 public class Enduser
@@ -123,12 +178,11 @@ public class Enduser
 public class Clan
 {
     public string ClanName { get; set; }
-    
-   }
-   
-   // Test Code:
-   
-   
+
+}
+
+//-----------TEST------------//
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace My_FPS_Test
@@ -163,4 +217,43 @@ namespace My_FPS_Test
         }
 
     }
+    [TestMethod]
+    public void WillGunReload_WillItRealod_ReturnTrue()
+    {
+        MyUser gunReload = new MyUser();
+        gunReload.IsEmpty = true;
+        gunReload.AmmoCount = 5;
+        bool ammoCount = gunReload.WillGunReaload(gunReload);
+
+        Assert.IsTrue(ammoCount);
+    }
+    [TestMethod]
+    public void UserSwitceshGun_GunWasSwapped_ReturnTrue()
+    {
+        Inventory myInventory = new Inventory();
+        myInventory.FirstGun = true;
+        myInventory.Gun2 = "Switched to Pistol";
+        bool gunInventory = myInventory.UserSwitchesGun(myInventory);
+
+        Assert.IsTrue(gunInventory);
+
+
+    }
+    [TestMethod]
+    public void UsersMovement_WillUserMove_ReturnTrue()
+    {
+        Movement myMovement = new Movement();
+        myMovement.UserMoves = true;
+        myMovement.UserPeeksRight = "Enduser Peeked Right!";
+        myMovement.UserPeeksLeft = "Enduser Peeked Left!";
+        bool userMovment = myMovement.UsersMovement(myMovement);
+
+
+        Assert.IsTrue(userMovment);
+    }
+
 }
+
+    
+
+
