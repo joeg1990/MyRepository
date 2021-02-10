@@ -1,0 +1,217 @@
+using System;
+using System.Collections.Generic;
+
+namespace QueueAndStack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Restaurant myRestaurant = new Restaurant();
+
+            myRestaurant.CustomerArrives(" The first Customer");
+            myRestaurant.CustomerArrives("The second Customer");
+            myRestaurant.CustomerArrives("The third Customer");
+
+
+
+            myRestaurant.WaitingCustomers();
+            myRestaurant.CustomerSeated();
+            myRestaurant.WaitingCustomers();
+
+            myRestaurant.CustomerLeaves();
+            myRestaurant.CustomerSeated();
+            myRestaurant.WaitingCustomers();
+            myRestaurant.CustomerLeaves();
+
+
+            myRestaurant.CleanedDishes();
+            myRestaurant.DirtyDishes();
+
+
+        }
+    }
+}
+
+public class Restaurant
+{
+    public Customer PrimaryCustomer { get; set; }
+    public Dishes PrimaryDishes { set; get; }
+
+    Queue<string> theQueue = new Queue<string>();
+    Stack<string> theStack = new Stack<string>();
+    Stack<string> theCleanStack = new Stack<string>();
+
+
+
+    public void CustomerArrives(string theCustomer)
+    {
+        theQueue.Enqueue(theCustomer);
+    }
+
+    public void WaitingCustomers()
+    {
+        Console.WriteLine("There is " + theQueue.Count + " customers waiting");
+    }
+
+    public void CustomerSeated()
+    {
+        string theCustomer = theQueue.Dequeue();
+        Console.WriteLine("Customer: " + theCustomer + " has been seated");
+    }
+    public void CustomerLeaves()
+    {
+        theStack.Push("First set of Dishes");
+        Console.WriteLine("Customer pays and leaves Restaurant");
+    }
+    public void CleanedDishes()
+    {
+        string theDishes = theStack.Pop();
+        theCleanStack.Push(theDishes);
+
+        Console.WriteLine("The Dishes have been cleaned");
+    }
+    public void DirtyDishes()
+    {
+        string cleanDishes = theCleanStack.Peek();
+        theStack.Push(cleanDishes);
+        Console.WriteLine("Ther are this many clean dishes " + theCleanStack.Count);
+    }
+
+    public bool IsClientInQueue(Customer customer)
+{
+    if (customer.IsInQueue)
+        return true;
+
+    if (customer.PlaceInQueue.QueuePlace  !=
+        PrimaryCustomer.PlaceInQueue .QueuePlace)
+        return true;
+
+    return false;
+
+   }
+    public bool AreDishesStacked(Dishes dishes)
+    {
+        if (dishes.AreInStack)
+            return true;
+
+        if (dishes.PlaceInStack.StackPlace !=
+            PrimaryDishes.PlaceInStack.StackPlace)
+            return true;
+
+        return false;
+    }
+}
+public class Dishes
+{
+    public string TheDishes { get; set; }
+    public bool AreInStack { get; set; }
+    public Stack PlaceInStack { get; set;}
+}
+public class Stack
+{
+    public string StackPlace { get; set; }
+}
+public class Customer
+{
+    public string Customers { get; set; }
+    public bool IsInQueue { get; set; }
+    public Queue PlaceInQueue { get; set; }
+ 
+}
+public class Queue
+{
+    public string QueuePlace { get; set; }
+}
+
+//Test_Restuarant//
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace MyUnitTestProject
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void IsCustomerInQueue_PlaceInQueue_RetrunsTrue()
+        {
+            Restaurant myResturant = new Restaurant();
+
+            Customer newCustomer = new Customer();
+            newCustomer.IsInQueue = true;
+            newCustomer.Customers = "The first Customer";
+
+            Queue newQueue = new Queue();
+            newQueue.QueuePlace = "frist in queue";
+            newCustomer.PlaceInQueue = newQueue;
+            myResturant.Primary Customer = newCustomer;
+            bool isQueued = myResturant.IsCustomerInQueue(newCustomer);
+
+
+            Customer theSecondCustomer = new Customer();
+            theSecondCustomer.IsInQueue = true;
+            theSecondCustomer.Customers = "The second Customer";
+
+            Queue theSecondCustomerPlace = new Queue();
+            theSecondCustomerPlace = "second in queue";
+            theSecondCustomerPlace.PlaceInQueue = newQueue;
+            myResturant.PrimaryCustomer = theSecondCustomer;
+            bool isQueued2 = myResturant.IsCustomerInQueue(theSecondCustomer);
+
+            Customer theThirdCustomer = new Customer();
+            theThirdCustomer.IsInQueue = true;
+            theThirdCustomer.Customers = "The third Customer";
+
+            newQueue theThirdCustomerPlace = new newQueue();
+            theThirdCustomerPlace = "third in queue";
+            theThirdCustomerPlace.PlaceInQueue = newQueue;
+            myResturant.PrimaryCustomer = theThirdCustomer;
+            bool isQueued3 = myResturant.IsCustomerInQueue(theThirdCustomer);
+
+            Assert.IsTrue(isQueued);
+            Assert.IsTrue(isQueued2);
+            Assert.IsTrue(isQueued3);
+
+        }
+        public void AreDishesInStack_DishesInStack_ReturnsTrue()
+        {
+            DishStack myDishStack = new DishStack();
+
+
+            Dishes myDirtyDishes = new Dishes();
+            myDirtyDishes.AreInStack = true;
+            myDirtyDishes.TheDishes = "Dirty Dishes";
+
+            Stack newStack = new Stack();
+            newStack.StackPlace " first to be cleaned";
+            myDirtyDishes.PlaceInStack = newStack;
+            myResturant.PrimaryStack = myDirtyDishes;
+            bool isStacked = myResturant.AreDishesInStack(myDirtyDishes);
+
+            Dishes myCleanDishes = new Dishes();
+            myCleanDishes.AreInStack = true;
+            myCleanDishes.TheDishes = "Clean Dishes";
+
+            Stack newCleanStack = new Stack();
+            newCleanStack.StackPlace "cleaned and stacked";
+            myCleanDishes.PlaceInStack = myCleanDishes;
+            myResturant.PrimaryStack = myCleanDishes;
+            bool isFinalStack = myResturant.AreDishesInStack(myCleanDishes);
+
+            Assert.IsTrue(isStacked);
+            Assert.IsTrue(isFinalStack);
+
+
+
+
+
+        }
+
+    }
+
+}
+
+
+
