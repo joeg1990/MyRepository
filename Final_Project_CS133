@@ -175,6 +175,8 @@ namespace MyUnitTestProject
             Assert.IsTrue(isQueued3);
 
         }
+        
+        [TestMethod]
         public void AreDishesInStack_DishesInStack_ReturnsTrue()
         {
             DishStack myDishStack = new DishStack();
